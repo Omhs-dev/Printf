@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohamadou <ohamadou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 23:03:04 by ohamadou          #+#    #+#             */
-/*   Updated: 2022/11/30 17:18:15 by ohamadou         ###   ########.fr       */
+/*   Created: 2023/01/23 18:32:17 by ohamadou          #+#    #+#             */
+/*   Updated: 2023/01/28 00:39:25 by ohamadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
+#include <unistd.h>
 
-int	ft_isascii(int as)
+int	ft_printchar(int c)
 {
-	if (as >= 0 && as <= 127)
-		return (1);
-	else
-		return (0);
+	write(1, &c, 1);
+	return (1);
 }
-
-// int main()
-// {
-//     int as;
-
-//     as = '\t';
-//     if (ft_isascii(as))
-//         write(1, "ascii", 5);
-//     else
-//         write(1, "not", 3);
-//     return(0);
-// }

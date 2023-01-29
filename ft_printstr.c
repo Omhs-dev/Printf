@@ -1,52 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printint.c                                      :+:      :+:    :+:   */
+/*   ft_printstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohamadou <ohamadou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 04:34:06 by ohamadou          #+#    #+#             */
-/*   Updated: 2023/01/17 04:51:15 by ohamadou         ###   ########.fr       */
+/*   Created: 2023/01/22 03:10:57 by ohamadou          #+#    #+#             */
+/*   Updated: 2023/01/28 20:48:33 by ohamadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_printint(int nb, char c)
+#include "ft_printf.h"
+
+void ft_putstr(char *str)
 {
 	int i;
-	int number;
-	int sign;
-
-	if (!nb)
-		return (1);
-	if (nb < 0)
-	{
-		sign = 1;
-		number = -nb;
-	}
-	else
-	{
-		sign = 0;
-		number = nb;
-	}
 
 	i = 0;
-	if (c == 'd')
+	while (str[i])
 	{
-		while (number)
-		{
-			number /= 10;
-			i++;
-		}
-		return (sign + i);
+		write(1, &str[i], 1);
+		i++;
 	}
-	if (c == 'x')
+}
+
+int ft_printstr(char *str)
+{
+	int i;
+
+	i = 0;
+	if (!str)
 	{
-		while (number)
-		{
-			number /= 16;
-			i++;
-		}
-		return (1);
+		write(1, "(null)", 6);
+		return (6);
 	}
-	return (0);
+	while (str[i])
+	{
+		ft_printchar(str[i]);
+		i++;
+	}
+	return (i);
 }

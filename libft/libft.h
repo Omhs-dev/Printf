@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohamadou <ohamadou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/25 17:48:18 by ohamadou          #+#    #+#             */
-/*   Updated: 2022/11/29 01:12:38 by ohamadou         ###   ########.fr       */
+/*   Created: 2022/11/06 15:10:30 by ohamadou          #+#    #+#             */
+/*   Updated: 2023/01/26 05:54:47 by ohamadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef LIBFT_H
+# define LIBFT_H
 
-void	ft_putendl_fd(char *s, int fd)
-{
-	while (*s)
-	{
-		ft_putchar_fd(*s, fd);
-		s++;
-	}
-	ft_putchar_fd('\n', fd);
-	if (!s)
-		return ;
-}
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdlib.h>
+
+
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putchar_fd(char c, int fd);
+char	*ft_strdup(const char *s);
+void	ft_putnbr_fd(int n, int fd);
+char	*ft_itoa(int n);
+char	*ft_strchr(const char *s, int c);
+
+#endif

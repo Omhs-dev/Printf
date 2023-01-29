@@ -6,50 +6,50 @@
 #    By: ohamadou <ohamadou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/15 23:35:39 by ohamadou          #+#    #+#              #
-#    Updated: 2023/01/17 04:13:43 by ohamadou         ###   ########.fr        #
+#    Updated: 2023/01/28 20:59:16 by ohamadou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = printf.a
+NAME = libftprintf.a
 
-SRCS = ft_printf.c
+SRCS = ft_printchar.c \
+		ft_printnbr.c \
+		ft_printpercent.c \
+		ft_printptr.c \
+		ft_printstr.c \
+		ft_printunsigned.c \
+		ft_printf.c \
+		ft_printhex.c \
+		main.c
+		
+LIBFTFILES = ft_itoa.c \
+		ft_putchar_fd.c \
+		
+LIBFTSRCS = $(addprefix libft/,$(LIBFTFILES))
 
 OBJ = $(SRCS:.c=.o)
+LIBFTOBJS = $(LIBFTSRCS:.c=.o)
 
-#LIBFT = ft_strlen.c
 
-#LIBFTSRCS = $(addprefix Libft/,$(LIBFT))
-
-#LIBFTOBJS = $(LIBFTSRCS:.c=.o)
-
-SRCDIR = ft_putchar.c ft_putstr.c ft_putnbr.c
-
-SRCDIR_SRC = $(addprefix src/,$(SRCDIR))
-
-SRCDIR_OBJS = $(SRCDIR_SRC:.c=.o)
-
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Werror -Wextra
 
 CC = cc
-#AR = ar rcs
 
-all: $(NAME)
+all : $(NAME)
 
-$(NAME): $(OBJ) $(SRCDIR_OBJS)
-	ar rcs $(NAME) $(OBJ) $(SRCDIR_OBJS)
-# ranlib $(NAME)
+$(NAME) : $(OBJ) $(LIBFTOBJS) ft_printf.h
+		$(CC) $(OBJ) $(LIBFTOBJS)
+		ar -rcs $(NAME) $(OBJ) $(LIBFTOBJS)
 
-# $(OBJ): $(SRCS)
-# 	$(CC) $(CFLAGS) -c $(SRCS)
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+# %.o : %.c ftprintf.h
+# 	${cc} ${CFLAGS} -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(SRCDIR_OBJS)
-
-fclean: clean
+	rm -f $(OBJ) $(LIBFTOBJS)
+	
+fclean:
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all fclean re bonus
+.PHONY : all fclean re

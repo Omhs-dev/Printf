@@ -1,34 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_printpercent.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohamadou <ohamadou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 20:46:53 by ohamadou          #+#    #+#             */
-/*   Updated: 2022/12/04 18:37:06 by ohamadou         ###   ########.fr       */
+/*   Created: 2023/01/22 03:20:40 by ohamadou          #+#    #+#             */
+/*   Updated: 2023/01/28 00:40:06 by ohamadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int ft_printpercent(void)
 {
-	char	*des ;
-	char	*sr;
-
-	des = (char *)dst;
-	sr = (char *)src;
-	if (!dst && !src)
-		return (NULL);
-	if (des > sr)
-	{
-		while (len > 0)
-		{
-			des[len - 1] = sr[len - 1];
-			len--;
-		}
-	}
-	ft_memcpy(des, sr, len);
-	return (dst);
+	write(1, "%", 1);
+	return (1);
 }
